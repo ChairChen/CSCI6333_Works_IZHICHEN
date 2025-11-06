@@ -1,25 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+// in class practices
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ThemeProvider from './context/ThemeContext';
+import Header from './components/Header/Header';
+// Lazy load main pages
+const Home = lazy(() => import('./pages/Home/Home'));
+const Exercises = lazy(() => import('./pages/Exercises/Exercises'));
+const Assignments = lazy(() => import('./pages/Assignments/Assignments'));
+const Preview = lazy(() => import('./pages/Preview/Preview'));
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider>
+      <Router>
+        <div className="App">
+          <Header />
+          <main>
+            <Suspense fallback={<div className='loading'>Loading...</div>}>
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/Exercises' element={<Exercises />} />
+                <Route path='/Assignments' element={<Assignments />} />
+                {/* fallback page */}
+                <Route path='*' element={<Preview />} />
+              </Routes>
+            </Suspense>
+          </main>
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 
-export default App;
