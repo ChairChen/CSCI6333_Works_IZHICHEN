@@ -13,7 +13,7 @@ export default function Exercises() {
     ,"UseMemo": UseMemo
     ,"UseRef": UseRef
   };
-  const ExerciseComponent = exercisesMap[selected] || (()=>{<p>No such exercise...</p>});
+  const ExerciseComponent = exercisesMap[selected] || (()=><p>No such exercise...</p>);
 
   return (
     <section className="main-section">
@@ -21,23 +21,29 @@ export default function Exercises() {
         <h2>Exercises Demo</h2>
         <details open>
           <summary>Class Component and Functional Component</summary>
-          <div className="details-wrapper">
-            <span className="sub-page-text" onClick={() => setSelected("Counter")}>
-              Counter
-            </span>
-          </div>
+          <ol className="details-wrapper">
+            <li>
+              <span className="sub-page-text" onClick={() => setSelected("Counter")}>
+                Counter
+              </span>
+            </li>
+          </ol>
         </details>
 
         <details open>
           <summary>Hooks</summary>
-          <div className="details-wrapper">
-            <span className="sub-page-text" onClick={() => setSelected("UseMemo")}>
-              UseMemo
-            </span>
-            <span className="sub-page-text" onClick={() => setSelected("UseRef")}>
-              UseRef
-            </span>
-          </div>
+          <ol className="details-wrapper">
+            <li>
+              <span className="sub-page-text" onClick={() => setSelected("UseMemo")}>
+                UseMemo
+              </span>
+            </li>
+            <li>
+              <span className="sub-page-text" onClick={() => setSelected("UseRef")}>
+                UseRef
+              </span>
+            </li>
+          </ol>
         </details>
        
       </nav>

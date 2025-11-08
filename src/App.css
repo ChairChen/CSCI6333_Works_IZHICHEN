@@ -46,10 +46,21 @@ main {
   width: 100%;
   text-align: left;
   cursor: pointer;
+  margin-top: 10px;
 }
 .main-section-nav details .details-wrapper {
   display: flex;
   flex-direction: column;
+  /* Reset the default padding/margin of <ol> which often offsets the list */
+  list-style-position: inside; /* Keeps the list marker (1., 2.) inside the bounds */
+}
+.main-section-nav details .details-wrapper li {
+  /* This ensures any text or content inside the LI aligns to the left */
+  width: 100%;
+  text-align: left;
+  color: var(--color-primary);
+  /* Remove default bullet/numbering if desired (optional) */
+  list-style: decimal inside; /* Use this if you want to keep the numbering */
 }
 
 
