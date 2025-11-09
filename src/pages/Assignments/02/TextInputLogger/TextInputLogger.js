@@ -11,6 +11,7 @@ export default function TextInputLogger() {
 
     return (
         <section>
+            <h2>Text Input Logger Functional Component</h2>
             <input
                 type="text"
                 value={inputValue}

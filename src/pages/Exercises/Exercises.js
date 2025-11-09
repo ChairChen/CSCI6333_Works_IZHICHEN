@@ -4,6 +4,7 @@ const Counter               = lazy(() => import("./Counter/Counter"));
 const FuncComponentCounter  = lazy(() => import("./Counter/FuncCounter"));
 const UseMemo               = lazy(() => import("./Hooks/UseMemo"));
 const UseRef                = lazy(() => import("./Hooks/UseRef"));
+const UseReducer            = lazy(() => import("./Hooks/UseReducer"));
 
 export default function Exercises() {
   const [selected, setSelected] = useState("");
@@ -12,6 +13,7 @@ export default function Exercises() {
     ,"Counter": (() => (<div><Counter /><br /><FuncComponentCounter /></div>))
     ,"UseMemo": UseMemo
     ,"UseRef": UseRef
+    ,"UseReducer": UseReducer
   };
   const ExerciseComponent = exercisesMap[selected] || (()=><p>No such exercise...</p>);
 
@@ -41,6 +43,11 @@ export default function Exercises() {
             <li>
               <span className="sub-page-text" onClick={() => setSelected("UseRef")}>
                 UseRef
+              </span>
+            </li>
+            <li>
+              <span className="sub-page-text" onClick={() => setSelected("UseReducer")}>
+                UseReducer
               </span>
             </li>
           </ol>

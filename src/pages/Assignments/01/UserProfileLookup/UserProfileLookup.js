@@ -64,8 +64,8 @@ export default function UserProfileLookup() {
 
 
     return (
-        <div>
-            <h1>User Profile Lookup</h1>
+        <section>
+            <h2>User Profile Lookup</h2>
             <div>
                 <label htmlFor="userId">Search User Id: </label>
                 <input 
@@ -78,6 +78,6 @@ export default function UserProfileLookup() {
                 <button onClick={handleClick}>Search</button>
             </div>
             {userId && <UserProfile userId={userId}/>}
-        </div>
+        </section>
     );
 }

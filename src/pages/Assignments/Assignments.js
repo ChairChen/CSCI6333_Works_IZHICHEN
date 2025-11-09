@@ -1,8 +1,16 @@
 import React, { lazy, Suspense, useState } from "react";
 // Assignments here
-const TicTacToe = lazy(() => import("./TicTacToe/TicTacToe"));
-const UserProfileLookup = lazy(() => import("./UserProfileLookup/UserProfileLookup"));
-const TextInputLogger = lazy(() => import("./TextInputLogger/TextInputLogger"));
+const TicTacToe = lazy(() => import("./01/TicTacToe/TicTacToe"));
+const UserProfileLookup = lazy(() => import("./01/UserProfileLookup/UserProfileLookup"));
+const TextInputLogger = lazy(() => import("./02/TextInputLogger/TextInputLogger"));
+const TextInputLoggerComponent = lazy(() => import("./02/TextInputLogger/TextInputLoggerComponent"));
+const TodoList = lazy(() => import("./02/TodoList/TodoList"));
+const NameSaver = lazy(() => import("./02/NameSaver/NameSaver"));
+const Messager = lazy(() => import("./02/Messager/Messager"));
+const ParentChildComponent = lazy(() => import("./02/ParentChildComponent/ParentComponent"));
+const MyButton = lazy(() => import("./02/MyButton/MyButton"));
+const SearchApp = lazy(() => import("./02/SearchApp/SearchApp"));
+const LoginForm = lazy(() => import("./02/LoginForm/LoginForm"));
 
 export default function Assignments() {
   const [selected, setSelected] = useState("");
@@ -11,8 +19,21 @@ export default function Assignments() {
     ,"TicTacToe": TicTacToe
     ,"UserProfileLookup": UserProfileLookup
     ,"TextInputLogger": TextInputLogger
+    ,"TextInputLoggerComponent": TextInputLoggerComponent
+    ,"TodoList": TodoList
+    ,"NameSaver": NameSaver
+    ,"Messager": Messager
+    ,"ParentChildComponent": ParentChildComponent
+    ,"MyButton": MyButton
+    ,"SearchApp": SearchApp
+    ,"LoginForm": LoginForm
   };
+  const propsToPassMap = {
+    "TodoList": { initialTodos: [{ id: 1, text: "Learn React" }, { id: 2, text: "Practice Hooks" }, { id: 3, text: "Build a Project" }] }
+  };
+
   const AssignmentComponent = assignmentsMap[selected] || (()=><p>No such assignment...</p>);
+  const propsToPass = propsToPassMap[selected] || {};
   console.log(AssignmentComponent);
   
   return (
@@ -40,8 +61,48 @@ export default function Assignments() {
           <summary>Assignment02 - Hooks / Synthetic Events</summary>
           <ol className="details-wrapper">
             <li>
+              <span className="sub-page-text" onClick={() => setSelected("ParentChildComponent")}>
+                ParentChildComponent
+              </span>
+            </li>
+            <li>
+              <span className="sub-page-text" onClick={() => setSelected("MyButton")}>
+                MyButton
+              </span>
+            </li>
+            <li>
               <span className="sub-page-text" onClick={() => setSelected("TextInputLogger")}>
                 TextInputLogger
+              </span>
+            </li>
+            <li>
+              <span className="sub-page-text" onClick={() => setSelected("TextInputLoggerComponent")}>
+                TextInputLoggerComponent
+              </span>
+            </li>
+            <li>
+              <span className="sub-page-text" onClick={() => setSelected("TodoList")}>
+                TodoList
+              </span>
+            </li>
+            <li>
+              <span className="sub-page-text" onClick={() => setSelected("NameSaver")}>
+                NameSaver
+              </span>
+            </li>
+            <li>
+              <span className="sub-page-text" onClick={() => setSelected("Messager")}>
+                Messager
+              </span>
+            </li>
+            <li>
+              <span className="sub-page-text" onClick={() => setSelected("SearchApp")}>
+                SearchApp
+              </span>
+            </li>
+            <li>
+              <span className="sub-page-text" onClick={() => setSelected("LoginForm")}>
+                LoginForm
               </span>
             </li>
           </ol>
@@ -51,7 +112,7 @@ export default function Assignments() {
 
       <Suspense fallback={<div className="loading">Loading...</div>}>
         <div className="main-section-content">
-          <AssignmentComponent />
+          <AssignmentComponent {...propsToPass}/>
         </div>
       </Suspense>
     </section>
