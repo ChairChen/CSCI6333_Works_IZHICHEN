@@ -21,7 +21,9 @@ export default function App() {
               <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/Exercises' element={<Exercises />} />
+                <Route path='/Exercises/:exerciseName' element={<Exercises />} />
                 <Route path='/Assignments' element={<Assignments />} />
+                <Route path='/Assignments/:assignmentName' element={<Assignments />} />
                 {/* fallback page */}
                 <Route path='*' element={<Preview />} />
               </Routes>

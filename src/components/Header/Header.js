@@ -7,7 +7,28 @@ export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const { theme, setTheme } = useContext(ThemeContext);
     const location = useLocation();
-    const isActive = (path) => location.pathname === path ? "active" : "";
+    const isActive = (path) => {
+        // implement the regexp: https://www.w3schools.com/jsref/jsref_obj_regexp.asp
+        // 1. Handle the Root Path ('/') Case Separately
+        if (path === '/') {
+            // If the target path is '/', it should ONLY match when location.pathname is exactly '/'
+            // We use the full match anchors: ^ (start) and $ (end)
+            const regexp = /^\/$/;
+            return regexp.test(location.pathname) ? "active" : "";
+        }
+        // 2. Handle All Other Paths (e.g., '/Exercises', '/Assignments')
+        // We use a pattern that requires the location.pathname to START with the target path.
+        // Escape any special regex characters in the path first (good practice)
+        const escapedPath = path.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        // Pattern: 
+        // ^ : Start of the string
+        // ${escapedPath} : The literal path, e.g., /Exercises
+        // (\/|$): Followed by either a forward slash (for subpages) OR the end of the string (for the parent page itself)
+        const patternString = '^' + escapedPath + '(\\/|$)';
+        // Create the RegExp object
+        const regexp = new RegExp(patternString);
+        return regexp.test(location.pathname) ? "active" : "";
+    }
     const toggleTheme = () => {
         setTheme(theme === "light" ? "dark" : "light");
     };

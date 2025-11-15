@@ -1,4 +1,5 @@
 import React, { lazy, Suspense, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 // Exercises here
 const Counter               = lazy(() => import("./Counter/Counter"));
 const FuncComponentCounter  = lazy(() => import("./Counter/FuncCounter"));
@@ -7,7 +8,9 @@ const UseRef                = lazy(() => import("./Hooks/UseRef"));
 const UseReducer            = lazy(() => import("./Hooks/UseReducer"));
 
 export default function Exercises() {
-  const [selected, setSelected] = useState("");
+  const exerciseName = useParams();
+  const navigate = useNavigate();
+  const [selected, setSelected] = useState(exerciseName || "");
   const exercisesMap = {
      "": (()=>(<p>Select an exercise demo.</p>))
     ,"Counter": (() => (<div><Counter /><br /><FuncComponentCounter /></div>))
@@ -15,7 +18,15 @@ export default function Exercises() {
     ,"UseRef": UseRef
     ,"UseReducer": UseReducer
   };
+  const propsToPassMap = {};
+
   const ExerciseComponent = exercisesMap[selected] || (()=><p>No such exercise...</p>);
+  const propsToPass = propsToPassMap[selected] || {};
+
+  const handleSelect = (name) => {
+    setSelected(name);
+    navigate(`/Exercises/${name}`);
+  };
 
   return (
     <section className="main-section">
@@ -25,7 +36,7 @@ export default function Exercises() {
           <summary>Class Component and Functional Component</summary>
           <ol className="details-wrapper">
             <li>
-              <span className="sub-page-text" onClick={() => setSelected("Counter")}>
+              <span className="sub-page-text" onClick={() => handleSelect("Counter")}>
                 Counter
               </span>
             </li>
@@ -36,17 +47,17 @@ export default function Exercises() {
           <summary>Hooks</summary>
           <ol className="details-wrapper">
             <li>
-              <span className="sub-page-text" onClick={() => setSelected("UseMemo")}>
+              <span className="sub-page-text" onClick={() => handleSelect("UseMemo")}>
                 UseMemo
               </span>
             </li>
             <li>
-              <span className="sub-page-text" onClick={() => setSelected("UseRef")}>
+              <span className="sub-page-text" onClick={() => handleSelect("UseRef")}>
                 UseRef
               </span>
             </li>
             <li>
-              <span className="sub-page-text" onClick={() => setSelected("UseReducer")}>
+              <span className="sub-page-text" onClick={() => handleSelect("UseReducer")}>
                 UseReducer
               </span>
             </li>
@@ -57,7 +68,7 @@ export default function Exercises() {
       
       <Suspense fallback={<div className="loading">Loading...</div>}>
         <div className="main-section-content">
-          <ExerciseComponent />
+          <ExerciseComponent {...propsToPass}/>
         </div>
       </Suspense>
     </section>
