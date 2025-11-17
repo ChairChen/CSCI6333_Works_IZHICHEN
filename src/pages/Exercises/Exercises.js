@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState } from "react";
+import React, { lazy, Suspense } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 // Exercises here
 const Counter               = lazy(() => import("./Counter/Counter"));
@@ -8,9 +8,9 @@ const UseRef                = lazy(() => import("./Hooks/UseRef"));
 const UseReducer            = lazy(() => import("./Hooks/UseReducer"));
 
 export default function Exercises() {
-  const exerciseName = useParams();
+  const { exerciseName } = useParams();
   const navigate = useNavigate();
-  const [selected, setSelected] = useState(exerciseName || "");
+  // const [selected, setSelected] = useState(exerciseName || "");
   const exercisesMap = {
      "": (()=>(<p>Select an exercise demo.</p>))
     ,"Counter": (() => (<div><Counter /><br /><FuncComponentCounter /></div>))
@@ -20,11 +20,11 @@ export default function Exercises() {
   };
   const propsToPassMap = {};
 
-  const ExerciseComponent = exercisesMap[selected] || (()=><p>No such exercise...</p>);
-  const propsToPass = propsToPassMap[selected] || {};
+  const ExerciseComponent = exercisesMap[exerciseName] || (()=><p>No exercise selected...</p>);
+  const propsToPass = propsToPassMap[exerciseName] || {};
 
   const handleSelect = (name) => {
-    setSelected(name);
+    // setSelected(name);
     navigate(`/Exercises/${name}`);
   };
 
@@ -33,7 +33,7 @@ export default function Exercises() {
       <nav className="main-section-nav">
         <h2>Exercises Demo</h2>
         <details open>
-          <summary>Class Component and Functional Component</summary>
+          <summary>Class and Functional Component</summary>
           <ol className="details-wrapper">
             <li>
               <span className="sub-page-text" onClick={() => handleSelect("Counter")}>

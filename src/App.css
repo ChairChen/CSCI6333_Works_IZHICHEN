@@ -67,7 +67,6 @@ main {
   list-style: decimal inside; /* Use this if you want to keep the numbering */
 }
 
-
 .main-section-content {
   width: 100%;
   grid-area: main-section-content;
@@ -79,6 +78,58 @@ main {
   box-shadow: 0 4px 10px var(--color-shadow);
 }
 
+/* assignment 03 - mini single page app style */
+.mini-spa-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* --- Fullscreen mode layout --- */
+.fullscreen-mode {
+  grid-template-columns: 1fr !important;
+  grid-template-areas: "main-section-content" !important;
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+}
+
+/* Hide the site header when fullscreen */
+.fullscreen-mode header {
+  display: none !important;
+}
+
+/* Expand the right side container */
+.fullscreen-mode .main-section-content {
+  width: 100vw !important;
+  height: 100vh !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: auto;
+}
+
+/* Fullscreen toggle button */
+.fullscreen-toggle {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+
+  padding: 10px 16px;
+  border-radius: 8px;
+
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 1000;
+}
+
+.fullscreen-toggle:hover {
+  opacity: 0.9;
+}
+
+
 @media screen and (max-width: 800px) {
   .main-section {
     display: grid;
@@ -88,4 +139,7 @@ main {
       "main-section-nav"
       "main-section-content";
   }
+  .mini-spa-nav {
+        justify-content: flex-start;
+    }
 }

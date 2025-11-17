@@ -23,7 +23,8 @@ export default function App() {
                 <Route path='/Exercises' element={<Exercises />} />
                 <Route path='/Exercises/:exerciseName' element={<Exercises />} />
                 <Route path='/Assignments' element={<Assignments />} />
-                <Route path='/Assignments/:assignmentName' element={<Assignments />} />
+                <Route path='/Assignments/:assignmentName/*' element={<Assignments />} />
+                {/* for Assignment03 mini SPA uses */}
                 {/* fallback page */}
                 <Route path='*' element={<Preview />} />
               </Routes>

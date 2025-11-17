@@ -1,8 +1,10 @@
 import React, { lazy, Suspense, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 // Assignments here
+// Assignment01
 const TicTacToe                 = lazy(() => import("./01/TicTacToe/TicTacToe"));
 const UserProfileLookup         = lazy(() => import("./01/UserProfileLookup/UserProfileLookup"));
+// Assignment02
 const TextInputLogger           = lazy(() => import("./02/TextInputLogger/TextInputLogger"));
 const TextInputLoggerComponent  = lazy(() => import("./02/TextInputLogger/TextInputLoggerComponent"));
 const TodoList                  = lazy(() => import("./02/TodoList/TodoList"));
@@ -12,11 +14,14 @@ const ParentChildComponent      = lazy(() => import("./02/ParentChildComponent/P
 const MyButton                  = lazy(() => import("./02/MyButton/MyButton"));
 const SearchApp                 = lazy(() => import("./02/SearchApp/SearchApp"));
 const LoginForm                 = lazy(() => import("./02/LoginForm/LoginForm"));
+// Assignment03
+const miniSPA                   = lazy(() => import("./03/miniSPA"));
 
 export default function Assignments() {
-  const assignmentName = useParams();
+  const { assignmentName } = useParams();
   const navigate = useNavigate();
-  const [selected, setSelected] = useState(assignmentName || "");
+  // const [selected, setSelected] = useState(assignmentName || "");
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const assignmentsMap = {
      "": (() => (<p>Select an assignment demo.</p>))
     ,"TicTacToe": TicTacToe
@@ -30,22 +35,30 @@ export default function Assignments() {
     ,"MyButton": MyButton
     ,"SearchApp": SearchApp
     ,"LoginForm": LoginForm
+    ,"miniSPA":miniSPA
   };
   const propsToPassMap = {
     "TodoList": { initialTodos: [{ id: 1, text: "Learn React" }, { id: 2, text: "Practice Hooks" }, { id: 3, text: "Build a Project" }] }
+    ,"miniSPA": { basePath: "/Assignments/"+assignmentName }
   };
 
-  const AssignmentComponent = assignmentsMap[selected] || (()=><p>No such assignment...</p>);
-  const propsToPass = propsToPassMap[selected] || {};
+  const AssignmentComponent = assignmentsMap[assignmentName] || (()=><p>No assignment selected...</p>);
+  const propsToPass = propsToPassMap[assignmentName] || {};
 
   const handleSelect = (name) => {
-    setSelected(name);
+    // setSelected(name);
     navigate(`/Assignments/${name}`);
   };
 
+  const toggleFullscreen = () => {
+    setIsFullscreen((prev) => !prev);
+  };
+
   return (
-    <section className="main-section">
-      <nav className="main-section-nav">
+    <section className={`main-section ${isFullscreen ? "fullscreen-mode" : ""}`}>
+
+      {/* Left Navigation */}
+      <nav className="main-section-nav" style={{ display: isFullscreen ? "none" : "flex" }}>
         <h2>Assignments Demo</h2>
 
         <details open>
@@ -115,10 +128,31 @@ export default function Assignments() {
           </ol>
         </details>
 
+
+        <details open>
+          <summary>Assignment03 - Controlled/Uncontrolled Form</summary>
+          <ol className="details-wrapper">
+            <li>
+              <span className="sub-page-text" onClick={() => handleSelect("miniSPA")}>
+                miniSPA
+              </span>
+            </li>
+          </ol>
+        </details>
+
       </nav>
 
       <Suspense fallback={<div className="loading">Loading...</div>}>
         <div className="main-section-content">
+          
+          {/* --- Fullscreen toggle button --- */}
+          <button
+            className="fullscreen-toggle"
+            onClick={toggleFullscreen}
+          >
+            {isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
+          </button>
+
           <AssignmentComponent {...propsToPass}/>
         </div>
       </Suspense>
