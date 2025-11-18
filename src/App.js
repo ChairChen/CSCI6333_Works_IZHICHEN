@@ -38,7 +38,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <FullscreenProvider>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <AppContent />
         </Router>
       </FullscreenProvider>
