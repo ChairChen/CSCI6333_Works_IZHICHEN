@@ -1,51 +1,69 @@
+import React from 'react';
+
 export default function Home() {
   return (
     <section className="main-section">
+      {/* Navigation Sidebar: Project Info and Packages */}
       <nav className="main-section-nav">
-        <h2>Works Demo</h2>
-        Packages Downloaded...
-        <ul>
-          <li>react-dom</li>
-          <li>react-router-dom</li>
-          <li>react-scripts</li>
+        <h2>Home Demo</h2>
+        <p>Packages Downloaded and Used:</p>
+        <ul style={{ textAlign: "left"}}>
+          <li>Core: react-dom, react-scripts</li>
+          <li>Routing: react-router-dom</li>
+          <li>State Management: redux, react-redux</li>
+          <li>Form Handling: react-hook-form</li>
         </ul>
       </nav>
 
+      {/* Main Content Area */}
       <div className="main-section-content">
-        <h2>Welcome to My Home Page</h2>
+        <h1>Welcome to My React Practice Hub</h1>
         <p>
-          This is my React Practice Hub — choose a section above to get started.
-          <br />
-          This lecture covered below concepts and hands-on exercise:
+          This is your central React training ground. Please select a section from the navigation to view the corresponding demo.
         </p>
+        
         <br />
-        <h3>Library react</h3>
-        <ol>
-          <li>useState</li>
-          <li>useEffect</li>
-          <li>useRef</li>
-          <li>useMemo</li>
-          <li>Suspense</li>
-          <li>Lazy</li>
-          <li>Component</li>
-        </ol>
+        <hr />
+        <br />
+        
+        <h2>Key Concepts and Hands-on Exercises Covered</h2>
+        
+        {/* React Hooks and Core Concepts */}
+        <div className="concept-group">
+          <h3>Core React Hooks and Features</h3>
+          <ol style={{ textAlign: "left"}}>
+            <li>Hooks: useState, useEffect, useRef, useMemo</li>
+            <li>Performance & Loading: Suspense, Lazy (Code Splitting)</li>
+            <li>Component Types: Functional Component, Class Component</li>
+          </ol>
+        </div>
 
-        <h3>Library react-router-dom</h3>
-        <ol>
-          <li>BrowserRouter</li>
-          <li>Routes</li>
-          <li>Route</li>
-          <li>useParams</li>
-          <li>useNavigate</li>
-        </ol>
+        <br />
 
-        <strong>
-          implement all the hook
-          , and find the differences between functional component and constant component and an normal class component
-          , and download the formik thrid party packages to npm
-          , and download the react troubleshooting debugger to Chrome Extension
-          , and finally organize/list all the notes here
-        </strong>
+        {/* Routing Concepts */}
+        <div className="concept-group">
+          <h3>Library: react-router-dom Routing</h3>
+          <ol style={{ textAlign: "left"}}>
+            <li>Components: BrowserRouter, Routes, Route</li>
+            <li>Hooks: useParams (Parameter Retrieval), useNavigate (Programmatic Navigation)</li>
+          </ol>
+        </div>
+        
+        <br />
+        <hr />
+        <br />
+
+        {/* Detailed Exercise List */}
+        <h3>Detailed Hands-on Exercises</h3>
+        <ol style={{ textAlign: "left"}}>
+          <li>Component Fundamentals: JSX, Functional vs. Class Components, Component Lifecycle, State and Props.</li>
+          <li>Hooks Application: Implementing all hooks, Event Handling (Synthetic Events) and Event Binding.</li>
+          <li>Component Comparison: Analyzing the differences between functional components, constant components, and normal class components.</li>
+          <li>Debugging: Downloading and using the React DevTools Chrome Extension for troubleshooting.</li>
+          <li>Routing & Navigation: Implementing route components, Nested Routes, and Programmatic Navigation.</li>
+          <li>State Management: Implementing the full Redux state management flow.</li>
+          <li>Form Handling: Using third-party packages like Formik and React Hook Form for form management (Controlled/Uncontrolled Components) and Validation.</li>
+        </ol>
 
       </div>
     </section>

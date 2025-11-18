@@ -4,7 +4,7 @@ export default function ProfilePage() {
       style={{
         padding: "2rem",
         borderRadius: "8px",
-        width: "350px",
+        width: "300px",
         border: "1px solid var(--color-text)"
       }}
     >

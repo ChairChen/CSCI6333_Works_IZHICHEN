@@ -1,11 +1,13 @@
 import "./Header.css";
 import { useContext, useState } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
+import { useFullscreen } from "../../context/FullscreenContext";
 import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const { theme, setTheme } = useContext(ThemeContext);
+    const { isFullscreen } = useFullscreen();
     const location = useLocation();
     const isActive = (path) => {
         // implement the regexp: https://www.w3schools.com/jsref/jsref_obj_regexp.asp
@@ -35,6 +37,9 @@ export default function Header() {
     const toggleMenu = () => {
         setMenuOpen((prev) => !prev);
     };
+
+    // if its under fullscreen mode, terminate this function and return null to display empty = hide
+    if (isFullscreen) return null;
     
     return (
         <header className="site-header">
@@ -67,7 +72,13 @@ export default function Header() {
                         onClick={() => setMenuOpen(false)}
                     >Assignments</Link>
 
-                    <button onClick={()=>{toggleTheme();}} className="theme-toggle" title="Toggle light/dark mode">
+                    <button 
+                        onClick={ () => { 
+                            toggleTheme();
+                            setMenuOpen(false);
+                        } }
+                        className="theme-toggle"
+                        title="Toggle light/dark mode">
                         {theme === "light" ? "🌞" : "🌙"}
                     </button>
                 </nav>

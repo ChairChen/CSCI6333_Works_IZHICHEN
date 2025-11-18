@@ -61,3 +61,8 @@ input, textarea, select, option {
 a {
   color: var(--color-primary);
 }
+
+hr {
+  border: 1px solid var(--color-text);
+  width: 90%;
+}

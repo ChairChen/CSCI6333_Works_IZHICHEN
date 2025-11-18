@@ -94,6 +94,8 @@ export default function TicTacToe() {
     return (
         <section className="game">
             <div className="game-board">
+                <h2>Tic-Tac-Toe</h2>
+                <br />
                 <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
             </div>
             <div className="game-info">

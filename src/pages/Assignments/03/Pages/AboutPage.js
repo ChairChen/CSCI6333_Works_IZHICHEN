@@ -40,7 +40,7 @@ export default function AboutPage() {
                 <img
                 src={NY}
                 alt="New York"
-                style={{ borderRadius: "8px", marginTop: "0.5rem", height: "200px", width: "200px" }}
+                style={{ borderRadius: "8px", marginTop: "0.5rem", height: "200px", width: "300px" }}
                 />
             </section>
         </div>

@@ -1,4 +1,5 @@
-import React, { lazy, Suspense, useState } from "react";
+import React, { lazy, Suspense } from "react";
+import { useFullscreen } from "../../context/FullscreenContext";
 import { useParams, useNavigate } from "react-router-dom";
 // Assignments here
 // Assignment01
@@ -21,7 +22,9 @@ export default function Assignments() {
   const { assignmentName } = useParams();
   const navigate = useNavigate();
   // const [selected, setSelected] = useState(assignmentName || "");
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  // const [isFullscreen, setIsFullscreen] = useState(false);
+  const { isFullscreen, toggleFullscreen } = useFullscreen();
+  
   const assignmentsMap = {
      "": (() => (<p>Select an assignment demo.</p>))
     ,"TicTacToe": TicTacToe
@@ -50,15 +53,12 @@ export default function Assignments() {
     navigate(`/Assignments/${name}`);
   };
 
-  const toggleFullscreen = () => {
-    setIsFullscreen((prev) => !prev);
-  };
-
   return (
-    <section className={`main-section ${isFullscreen ? "fullscreen-mode" : ""}`}>
+    <section className={`main-section ${isFullscreen ? "is-fullscreen-active" : ""}`}>
 
       {/* Left Navigation */}
-      <nav className="main-section-nav" style={{ display: isFullscreen ? "none" : "flex" }}>
+      {(!isFullscreen) && 
+      <nav className="main-section-nav">
         <h2>Assignments Demo</h2>
 
         <details open>
@@ -141,6 +141,7 @@ export default function Assignments() {
         </details>
 
       </nav>
+      }
 
       <Suspense fallback={<div className="loading">Loading...</div>}>
         <div className="main-section-content">
