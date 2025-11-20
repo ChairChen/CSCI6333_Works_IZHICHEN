@@ -2,7 +2,7 @@ import { INCREMENT, DECREMENT } from "../actions/ReduxCounterActions";
 
 const initialState = { count: 0 };
 
-export default function reduxCounterReducer(state = initialState, action) {
+export default function ReduxCounterReducer(state = initialState, action) {
     switch (action.type) {
         case INCREMENT:
             return { ...state, count: state.count + 1 };
