@@ -8,6 +8,7 @@
   --color-text: #222222;
   --color-header-bg: #f8f8ff;
   --color-primary: #007bff;
+  --color-warning: red;
   --color-shadow: rgba(0,0,0,0.1);
 
   --max-container-width: 1200px;

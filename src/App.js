@@ -1,10 +1,13 @@
 import './App.css';
 // in class practices
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// replaced BrowserRouter with HashRouter to address the 404 error when refreshing pages
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
 import ThemeProvider from './context/ThemeContext';
 import { FullscreenProvider, useFullscreen } from './context/FullscreenContext';
 import Header from './components/Header/Header';
+import { HashRouter } from 'react-router-dom';
 // Lazy load main pages
 const Home = lazy(() => import('./pages/Home/Home'));
 const Exercises = lazy(() => import('./pages/Exercises/Exercises'));
@@ -38,7 +41,9 @@ export default function App() {
   return (
     <ThemeProvider>
       <FullscreenProvider>
-        <Router basename={process.env.PUBLIC_URL}>
+        {/* remove basename because HashRouter resolved GitHub Pages 404 error */}
+        {/* <Router basename={process.env.PUBLIC_URL}> */}
+        <Router>
           <AppContent />
         </Router>
       </FullscreenProvider>

@@ -7,12 +7,12 @@ export default function ReduxCounter() {
     const dispatch = useDispatch();
 
     return (
-        <div>
+        <section>
             <h2>Redux Counter</h2>
             <h1>{count}</h1>
 
             <button onClick={() => dispatch(decrement())}>-</button>
             <button onClick={() => dispatch(increment())}>+</button>
-        </div>
+        </section>
     );
 }

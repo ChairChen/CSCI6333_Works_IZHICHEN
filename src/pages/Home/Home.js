@@ -6,12 +6,41 @@ export default function Home() {
       {/* Navigation Sidebar: Project Info and Packages */}
       <nav className="main-section-nav">
         <h2>Home Demo</h2>
-        <p>Packages Downloaded and Used:</p>
+        <p>Packages Used/Link Referenced:</p>
+        <br />
         <ul style={{ textAlign: "left"}}>
+          <li>
+            <a 
+              href='https://chairchen.github.io/CSCI6333_Works_IZHICHEN/' 
+              target='_blank'
+              rel='noreferrer'
+            >My React App Link</a>
+          </li>
           <li>Core: react-dom, react-scripts</li>
           <li>Routing: react-router-dom</li>
           <li>State Management: redux, react-redux</li>
           <li>Form Handling: react-hook-form</li>
+          <li>
+            <a 
+              href='https://www.dremendo.com/html-tutorial/html-emoji-codes' 
+              target='_blank'
+              rel='noreferrer'
+            >Emoji Reference Link</a>
+          </li>
+          <li>
+            <a 
+              href='https://dev.to/dyarleniber/setting-up-a-ci-cd-workflow-on-github-actions-for-a-react-app-with-github-pages-and-codecov-4hnp' 
+              target='_blank'
+              rel='noreferrer'
+            >Node.js CI/CD</a>
+          </li>
+          <li>
+            <a 
+              href='https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site' 
+              target='_blank'
+              rel='noreferrer'
+            >GitHub Action</a>
+          </li>
         </ul>
       </nav>
 
@@ -20,8 +49,6 @@ export default function Home() {
         <h1>Welcome to My React Practice Hub</h1>
         <p>
           This is your central React training ground. Please select a section from the navigation to view the corresponding demo.
-          <br />
-          <strong><a href='https://chairchen.github.io/CSCI6333_Works_IZHICHEN/'>LINK TO REACT APP</a></strong>
         </p>
         
         <br />
@@ -66,14 +93,21 @@ export default function Home() {
           <li>State Management: Implementing the full Redux state management flow.</li>
           <li>Form Handling: Using third-party packages like Formik and React Hook Form for form management (Controlled/Uncontrolled Components) and Validation.</li>
         </ol>
-        deployed by Node.js CI/CD on 11/18/2025
-        ref - https://dev.to/dyarleniber/setting-up-a-ci-cd-workflow-on-github-actions-for-a-react-app-with-github-pages-and-codecov-4hnp
-        ref - https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
-        ⚠️ One Final Check on your package.json
-        I noticed in your package.json you have react-router-dom.
-        When you deploy to GitHub Pages, if you refresh the page on any route other than the home page (like /about), you might get a 404 Error.
-        To fix this in the future, you should use HashRouter instead of BrowserRouter in your index.js or App.js file, or your links will break on refresh.
-
+        
+        <br />
+        
+        <details style={{ cursor: "pointer" }}>
+          <summary>⚠️ One Final Check on package.json, having react-router-dom.</summary>
+          When you deploy to GitHub Pages,
+          <span style={{ color: "red", fontWeight: "bold" }}>
+            &nbsp;if you refresh the page on any route other than the home page (like /about), you might get a 404 Error.
+          </span>
+          &nbsp;To fix this in the future, you
+          <span style={{ color: "red", fontWeight: "bold" }}>
+            &nbsp;should use HashRouter instead of BrowserRouter
+          </span>
+          &nbsp;in your index.js or App.js file, or your links will break on refresh.
+        </details>
       </div>
     </section>
   );

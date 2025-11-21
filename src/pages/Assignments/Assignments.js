@@ -17,6 +17,8 @@ const SearchApp                 = lazy(() => import("./02/SearchApp/SearchApp"))
 const LoginForm                 = lazy(() => import("./02/LoginForm/LoginForm"));
 // Assignment03
 const miniSPA                   = lazy(() => import("./03/miniSPA"));
+// Assignment04
+const reduxSPA         = lazy(() => import("./04/reduxSPA"));
 
 export default function Assignments() {
   const { assignmentName } = useParams();
@@ -39,10 +41,12 @@ export default function Assignments() {
     ,"SearchApp": SearchApp
     ,"LoginForm": LoginForm
     ,"miniSPA":miniSPA
+    ,"reduxSPA":reduxSPA
   };
   const propsToPassMap = {
     "TodoList": { initialTodos: [{ id: 1, text: "Learn React" }, { id: 2, text: "Practice Hooks" }, { id: 3, text: "Build a Project" }] }
     ,"miniSPA": { basePath: "/Assignments/"+assignmentName }
+    ,"reduxSPA": { basePath: "/Assignments/"+assignmentName }
   };
 
   const AssignmentComponent = assignmentsMap[assignmentName] || (()=><p>No assignment selected...</p>);
@@ -135,6 +139,18 @@ export default function Assignments() {
             <li>
               <span className="sub-page-text" onClick={() => handleSelect("miniSPA")}>
                 miniSPA
+              </span>
+            </li>
+          </ol>
+        </details>
+
+
+        <details open>
+          <summary>Assignment04 - Redux</summary>
+          <ol className="details-wrapper">
+            <li>
+              <span className="sub-page-text" onClick={() => handleSelect("reduxSPA")}>
+                reduxSPA
               </span>
             </li>
           </ol>

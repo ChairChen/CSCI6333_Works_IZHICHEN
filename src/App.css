@@ -85,6 +85,18 @@ main {
     gap: 1rem;
 }
 
+/* assignment 04 - redux shopping cart */
+.redux-shopping-cart-container {
+    display: flex;
+    margin-top: 50px;
+}
+.redux-shopping-cart-catalog {
+  width: 48%;
+  margin-right: 4%;
+}
+.redux-shopping-cart-cart {
+  width: 48%;
+}
 
 
 /* --- Fullscreen mode layout --- */
@@ -154,6 +166,17 @@ main {
     padding: 80px 0px;
   }
   .mini-spa-nav {
-        justify-content: flex-start;
+    justify-content: flex-start;
+  }
+  .redux-shopping-cart-container {
+    flex-direction: column;
+  }
+  .redux-shopping-cart-catalog {
+    width: 100%;
+    margin: 0;
+  }
+  .redux-shopping-cart-cart {
+    margin-top: 50px;
+    width: 100%;
   }
 }
