@@ -8,6 +8,7 @@ const UseMemo               = lazy(() => import("./Hooks/UseMemo"));
 const UseRef                = lazy(() => import("./Hooks/UseRef"));
 const UseReducer            = lazy(() => import("./Hooks/UseReducer"));
 const ReduxCounter          = lazy(() => import("./Redux/ReduxCounter"));
+const CSSStyling            = lazy(() => import("./Styling/CSSStyling"));
 
 export default function Exercises() {
   const { exerciseName } = useParams();
@@ -22,6 +23,7 @@ export default function Exercises() {
     ,"UseRef": UseRef
     ,"UseReducer": UseReducer
     ,"ReduxCounter": ReduxCounter
+    ,"CSSStyling": CSSStyling
   };
   const propsToPassMap = {};
 
@@ -73,11 +75,22 @@ export default function Exercises() {
         </details>
 
         <details open>
-          <summary>Redux State Container</summary>
+          <summary>Redux State</summary>
           <ol className="details-wrapper">
             <li>
               <span className="sub-page-text" onClick={() => handleSelect("ReduxCounter")}>
                 ReduxCounter
+              </span>
+            </li>
+          </ol>
+        </details>
+
+        <details open>
+          <summary>CSS Styling</summary>
+          <ol className="details-wrapper">
+            <li>
+              <span className="sub-page-text" onClick={() => handleSelect("CSSStyling")}>
+                CSSStyling
               </span>
             </li>
           </ol>

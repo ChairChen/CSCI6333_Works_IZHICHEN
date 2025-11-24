@@ -1,6 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 
 function ChatWindow({ messages }) {
+  const ChatWindowStyle = {
+        maxHeight: "180px",
+        overflowY: "auto",
+        border: "1px solid #ccc",
+        padding: "10px",
+        borderRadius: "8px",
+        marginBottom: "10px",
+        scrollbarWidth: 'none',
+        MsOverflowStyle: 'none'
+  };
   const bottomRef = useRef(null);
 
   useEffect(() => {
@@ -8,16 +18,7 @@ function ChatWindow({ messages }) {
   }, [messages]);
 
   return (
-    <div
-      style={{
-        maxHeight: "180px",
-        overflowY: "auto",
-        border: "1px solid #ccc",
-        padding: "10px",
-        borderRadius: "8px",
-        marginBottom: "10px",
-      }}
-    >
+    <div style={ChatWindowStyle}>
       {messages.map((msg, index) => (
         <p key={index} style={{ margin: "4px 0" }}>
           {msg}

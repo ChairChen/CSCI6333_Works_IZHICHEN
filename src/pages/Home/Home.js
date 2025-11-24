@@ -20,6 +20,8 @@ export default function Home() {
           <li>Routing: react-router-dom</li>
           <li>State Management: redux, react-redux</li>
           <li>Form Handling: react-hook-form</li>
+          <li>CSS Styling: styled-components</li>
+          <li>CSS Styling: @emotion/react @emotion/styled</li>
           <li>
             <a 
               href='https://www.dremendo.com/html-tutorial/html-emoji-codes' 
