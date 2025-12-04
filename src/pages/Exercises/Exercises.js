@@ -9,6 +9,9 @@ const UseRef                = lazy(() => import("./Hooks/UseRef"));
 const UseReducer            = lazy(() => import("./Hooks/UseReducer"));
 const ReduxCounter          = lazy(() => import("./Redux/ReduxCounter"));
 const CSSStyling            = lazy(() => import("./Styling/CSSStyling"));
+const Fetch                 = lazy(() => import("./APICalls/Fetch"));
+const Axios                 = lazy(() => import("./APICalls/Axios"));
+const GraphQL                 = lazy(() => import("./APICalls/GraphQL"));
 
 export default function Exercises() {
   const { exerciseName } = useParams();
@@ -24,6 +27,9 @@ export default function Exercises() {
     ,"UseReducer": UseReducer
     ,"ReduxCounter": ReduxCounter
     ,"CSSStyling": CSSStyling
+    ,"Fetch": Fetch
+    ,"Axios": Axios
+    ,"GraphQL": GraphQL
   };
   const propsToPassMap = {};
 
@@ -91,6 +97,27 @@ export default function Exercises() {
             <li>
               <span className="sub-page-text" onClick={() => handleSelect("CSSStyling")}>
                 CSSStyling
+              </span>
+            </li>
+          </ol>
+        </details>
+
+        <details open>
+          <summary>API Calls</summary>
+          <ol className="details-wrapper">
+            <li>
+              <span className="sub-page-text" onClick={() => handleSelect("Fetch")}>
+                Fetch
+              </span>
+            </li>
+            <li>
+              <span className="sub-page-text" onClick={() => handleSelect("Axios")}>
+                Axios
+              </span>
+            </li>
+            <li>
+              <span className="sub-page-text" onClick={() => handleSelect("GraphQL")}>
+                GraphQL
               </span>
             </li>
           </ol>

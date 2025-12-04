@@ -21,7 +21,10 @@ export default function Home() {
           <li>State Management: redux, react-redux</li>
           <li>Form Handling: react-hook-form</li>
           <li>CSS Styling: styled-components</li>
-          <li>CSS Styling: @emotion/react @emotion/styled</li>
+          <li>CSS Styling: @emotion/react</li>
+          <li>CSS Styling: @emotion/styled</li>
+          <li>HTTP Request: axios</li>
+          <li>API: @apollo/client graphql</li>
           <li>
             <a 
               href='https://www.dremendo.com/html-tutorial/html-emoji-codes' 
@@ -98,7 +101,7 @@ export default function Home() {
         
         <br />
         
-        <details style={{ cursor: "pointer" }}>
+        <details style={{ cursor: "pointer", marginBottom: "10px" }}>
           <summary>⚠️ One Final Check on package.json, having react-router-dom.</summary>
           When you deploy to GitHub Pages,
           <span style={{ color: "red", fontWeight: "bold" }}>

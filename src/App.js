@@ -6,6 +6,8 @@ import React, { Suspense, lazy } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import ThemeProvider from './context/ThemeContext';
 import { FullscreenProvider, useFullscreen } from './context/FullscreenContext';
+import { ApolloProvider } from '@apollo/client/react';
+import { client } from './context/ApolloClientContext';
 import Header from './components/Header/Header';
 // Lazy load main pages
 const Home = lazy(() => import('./pages/Home/Home'));
@@ -38,15 +40,17 @@ function AppContent() {
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <FullscreenProvider>
-        {/* remove basename because HashRouter resolved GitHub Pages 404 error */}
-        {/* <Router basename={process.env.PUBLIC_URL}> */}
-        <Router>
-          <AppContent />
-        </Router>
-      </FullscreenProvider>
-    </ThemeProvider>
+    <ApolloProvider client={client}>
+      <ThemeProvider>
+        <FullscreenProvider>
+          {/* remove basename because HashRouter resolved GitHub Pages 404 error */}
+          {/* <Router basename={process.env.PUBLIC_URL}> */}
+          <Router>
+            <AppContent />
+          </Router>
+        </FullscreenProvider>
+      </ThemeProvider>
+    </ApolloProvider>
   );
 }
 
