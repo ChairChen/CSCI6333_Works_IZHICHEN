@@ -18,7 +18,9 @@ const LoginForm                 = lazy(() => import("./02/LoginForm/LoginForm"))
 // Assignment03
 const miniSPA                   = lazy(() => import("./03/miniSPA"));
 // Assignment04
-const reduxSPA         = lazy(() => import("./04/reduxSPA"));
+const reduxSPA                  = lazy(() => import("./04/reduxSPA"));
+// Assignment05
+const GraphQL                   = lazy(() => import("./05/GraphQL/GraphQL"));
 
 export default function Assignments() {
   const { assignmentName } = useParams();
@@ -42,6 +44,7 @@ export default function Assignments() {
     ,"LoginForm": LoginForm
     ,"miniSPA":miniSPA
     ,"reduxSPA":reduxSPA
+    ,"GraphQL":GraphQL
   };
   const propsToPassMap = {
     "TodoList": { initialTodos: [{ id: 1, text: "Learn React" }, { id: 2, text: "Practice Hooks" }, { id: 3, text: "Build a Project" }] }
@@ -151,6 +154,17 @@ export default function Assignments() {
             <li>
               <span className="sub-page-text" onClick={() => handleSelect("reduxSPA")}>
                 reduxSPA
+              </span>
+            </li>
+          </ol>
+        </details>
+
+        <details open>
+          <summary>Assignment05 - GraphQL</summary>
+          <ol className="details-wrapper">
+            <li>
+              <span className="sub-page-text" onClick={() => handleSelect("GraphQL")}>
+                GraphQL
               </span>
             </li>
           </ol>

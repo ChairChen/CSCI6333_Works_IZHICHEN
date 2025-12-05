@@ -1,8 +1,8 @@
-import React from 'react';
 import {
     gql
 } from '@apollo/client';
 import { useQuery } from '@apollo/client/react';
+import ApolloRootProvider from "../../../apollo/ApolloRootProvider";
 
 
 const GET_COUNTRIES = gql`
@@ -15,7 +15,7 @@ const GET_COUNTRIES = gql`
     }
 `;
 
-export default function GraphQL() {
+const GraphQLContent = () =>{
     const { loading, error, data } = useQuery(GET_COUNTRIES);
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
@@ -31,5 +31,13 @@ export default function GraphQL() {
                 ))}
             </ul>
         </section>
+    );
+}
+
+export default function GraphQL() {
+    return (
+        <ApolloRootProvider client="CountryClient">
+            <GraphQLContent />
+        </ApolloRootProvider>
     );
 }
