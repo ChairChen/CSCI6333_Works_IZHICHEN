@@ -23,6 +23,7 @@ export default function Home() {
           <li>CSS Styling: styled-components</li>
           <li>CSS Styling: @emotion/react</li>
           <li>CSS Styling: @emotion/styled</li>
+          <li>CSS Styling: react-bootstrap bootstrap</li>
           <li>HTTP Request: axios</li>
           <li>API: @apollo/client graphql</li>
           <li>
