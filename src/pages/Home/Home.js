@@ -1,120 +1,109 @@
+// •	Create a React application (Portfolio) with the following pages:
+// o	Home: A page with a welcome message.
+// o	About: A page describing your work.
+// o	Redux Example: A page to demonstrate the redux example.
+// o	CRUD Operations: A Page to demonstrate API fetch call.
+// o	Photo Gallery: A Page to demonstrate the Optimization Techniques
+// •	Add navigation links to switch between these pages.
+// •	Use the React Router to handle the routing.
+// •	Implement the UX (HTML) components using Bootstrap – Don't use regular styling.
+// •	Refer to the previous assignments for layout references
 import React from 'react';
+import { Container, Alert, Button, Card, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
-  return (
-    <section className="main-section">
-      {/* Navigation Sidebar: Project Info and Packages */}
-      <nav className="main-section-nav">
-        <h2>Home Demo</h2>
-        <p>Packages Used/Link Referenced:</p>
-        <br />
-        <ul style={{ textAlign: "left"}}>
-          <li>
-            <a 
-              href='https://chairchen.github.io/CSCI6333_Works_IZHICHEN/' 
-              target='_blank'
-              rel='noreferrer'
-            >My React App Link</a>
-          </li>
-          <li>Core: react-dom, react-scripts</li>
-          <li>Routing: react-router-dom</li>
-          <li>State Management: redux, react-redux</li>
-          <li>Form Handling: react-hook-form</li>
-          <li>CSS Styling: styled-components</li>
-          <li>CSS Styling: @emotion/react</li>
-          <li>CSS Styling: @emotion/styled</li>
-          <li>CSS Styling: react-bootstrap bootstrap</li>
-          <li>HTTP Request: axios</li>
-          <li>API: @apollo/client graphql</li>
-          <li>
-            <a 
-              href='https://www.dremendo.com/html-tutorial/html-emoji-codes' 
-              target='_blank'
-              rel='noreferrer'
-            >Emoji Reference Link</a>
-          </li>
-          <li>
-            <a 
-              href='https://dev.to/dyarleniber/setting-up-a-ci-cd-workflow-on-github-actions-for-a-react-app-with-github-pages-and-codecov-4hnp' 
-              target='_blank'
-              rel='noreferrer'
-            >Node.js CI/CD</a>
-          </li>
-          <li>
-            <a 
-              href='https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site' 
-              target='_blank'
-              rel='noreferrer'
-            >GitHub Action</a>
-          </li>
-        </ul>
-      </nav>
+    return (
+        <Container className="my-5">
+            {/* Jumbotron */}
+            <Alert variant="primary" className="p-5 text-center shadow-sm">
+                <Alert.Heading as="h1" className="display-4 fw-bold">
+                    Welcome to the React Practical Project Portfolio
+                </Alert.Heading>
+                <p className="lead mt-3 mb-4">
+                    This project is the final assignment for CSCI6333 and integrates key modern frontend
+                    development concepts and best practices, including state management, API communication,
+                    routing, and performance optimization.
+                </p>
+                <hr className="my-4" />
+                <Button variant="outline-primary" as={Link} to="/About">
+                    Explore the Tech Stack &rarr;
+                </Button>
+            </Alert>
 
-      {/* Main Content Area */}
-      <div className="main-section-content">
-        <h1>Welcome to My React Practice Hub</h1>
-        <p>
-          This is your central React training ground. Please select a section from the navigation to view the corresponding demo.
-        </p>
-        
-        <br />
-        <hr />
-        <br />
-        
-        <h2>Key Concepts and Hands-on Exercises Covered</h2>
-        
-        {/* React Hooks and Core Concepts */}
-        <div className="concept-group">
-          <h3>Core React Hooks and Features</h3>
-          <ol style={{ textAlign: "left"}}>
-            <li>Hooks: useState, useEffect, useRef, useMemo</li>
-            <li>Performance & Loading: Suspense, Lazy (Code Splitting)</li>
-            <li>Component Types: Functional Component, Class Component</li>
-          </ol>
-        </div>
+            {/* Core Features */}
+            <h2 className="mt-5 mb-4 text-center">Core Application Showcase</h2>
+            <Row xs={1} md={2} lg={4} className="g-4">
 
-        <br />
+                {/* CRUD */}
+                <Col>
+                    <Card className="h-100 shadow-sm">
+                        <Card.Body>
+                            <Card.Title>📝 CRUD Operations (API Practice)</Card.Title>
+                            <Card.Text>
+                                Implements full API operations (Create, Read, Update, Delete) using
+                                <strong> Axios</strong> with JSONPlaceholder, including an
+                                <strong> optimistic update</strong> strategy.
+                            </Card.Text>
+                            <Button variant="success" as={Link} to="/CRUD">
+                                Try the CRUD Page
+                            </Button>
+                        </Card.Body>
+                    </Card>
+                </Col>
 
-        {/* Routing Concepts */}
-        <div className="concept-group">
-          <h3>Library: react-router-dom Routing</h3>
-          <ol style={{ textAlign: "left"}}>
-            <li>Components: BrowserRouter, Routes, Route</li>
-            <li>Hooks: useParams (Parameter Retrieval), useNavigate (Programmatic Navigation)</li>
-          </ol>
-        </div>
-        
-        <br />
-        <hr />
-        <br />
+                {/* Gallery */}
+                <Col>
+                    <Card className="h-100 shadow-sm">
+                        <Card.Body>
+                            <Card.Title>🖼️ Photo Gallery & Optimization</Card.Title>
+                            <Card.Text>
+                                Fetches data from the Picsum Photos API and implements
+                                <strong> pagination</strong> and native
+                                <strong> lazy loading</strong> to demonstrate frontend performance optimization.
+                            </Card.Text>
+                            <Button variant="success" as={Link} to="/Gallery">
+                                View the Gallery
+                            </Button>
+                        </Card.Body>
+                    </Card>
+                </Col>
 
-        {/* Detailed Exercise List */}
-        <h3>Detailed Hands-on Exercises</h3>
-        <ol style={{ textAlign: "left"}}>
-          <li>Component Fundamentals: JSX, Functional vs. Class Components, Component Lifecycle, State and Props.</li>
-          <li>Hooks Application: Implementing all hooks, Event Handling (Synthetic Events) and Event Binding.</li>
-          <li>Component Comparison: Analyzing the differences between functional components, constant components, and normal class components.</li>
-          <li>Debugging: Downloading and using the React DevTools Chrome Extension for troubleshooting.</li>
-          <li>Routing & Navigation: Implementing route components, Nested Routes, and Programmatic Navigation.</li>
-          <li>State Management: Implementing the full Redux state management flow.</li>
-          <li>Form Handling: Using third-party packages like Formik and React Hook Form for form management (Controlled/Uncontrolled Components) and Validation.</li>
-        </ol>
-        
-        <br />
-        
-        <details style={{ cursor: "pointer", marginBottom: "10px" }}>
-          <summary>⚠️ One Final Check on package.json, having react-router-dom.</summary>
-          When you deploy to GitHub Pages,
-          <span style={{ color: "red", fontWeight: "bold" }}>
-            &nbsp;if you refresh the page on any route other than the home page (like /about), you might get a 404 Error.
-          </span>
-          &nbsp;To fix this in the future, you
-          <span style={{ color: "red", fontWeight: "bold" }}>
-            &nbsp;should use HashRouter instead of BrowserRouter
-          </span>
-          &nbsp;in your index.js or App.js file, or your links will break on refresh.
-        </details>
-      </div>
-    </section>
-  );
+                {/* Redux */}
+                <Col>
+                    <Card className="h-100 shadow-sm">
+                        <Card.Body>
+                            <Card.Title>🧠 Redux State Management</Card.Title>
+                            <Card.Text>
+                                Implements a complete <strong>To-Do App</strong> using
+                                <strong> Redux</strong> for global state management and connects React components
+                                via <code>useSelector</code> and <code>useDispatch</code>.
+                            </Card.Text>
+                            <Button variant="success" as={Link} to="/ReduxTodo">
+                                Explore the Redux App
+                            </Button>
+                        </Card.Body>
+                    </Card>
+                </Col>
+
+                {/* Contact Form */}
+                <Col>
+                    <Card className="h-100 shadow-sm">
+                        <Card.Body>
+                            <Card.Title>📞 Contact Form & Validation</Card.Title>
+                            <Card.Text>
+                                Demonstrates form data binding and strict client-side validation
+                                (implemented with <strong>React Hook Form</strong>), including email format
+                                validation and logic to prevent selecting past dates.
+                            </Card.Text>
+                            <Button variant="success" as={Link} to="/Contact">
+                                Try the Contact Form
+                            </Button>
+                        </Card.Body>
+                    </Card>
+                </Col>
+
+            </Row>
+        </Container>
+    );
 }

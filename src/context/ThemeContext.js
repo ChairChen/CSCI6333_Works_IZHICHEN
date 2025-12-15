@@ -2,7 +2,7 @@ import { createContext, useState, useEffect } from "react";
 
 export const ThemeContext = createContext();
 
-export default function ThemeProvider({ children }) {
+export const ThemeProvider = ({ children }) => {
     // const [theme, setTheme] = useState("light");
     const defaulTheme = 'light';
     const reactTheme = 'react_theme';
@@ -20,7 +20,8 @@ export default function ThemeProvider({ children }) {
     useEffect(() => {
         try {
             window.localStorage.setItem(reactTheme, JSON.stringify(theme));
-            document.body.classList.toggle("dark", theme === "dark");
+            // document.body.classList.toggle("dark", theme === "dark");
+            document.body.setAttribute('data-bs-theme', theme);
         } catch (error) {
              console.error("Error setting localStorage key “" + reactTheme + "”:", error);
         }
